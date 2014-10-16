@@ -7,6 +7,7 @@
 
 namespace Drupal\emptyparagraphkiller\Plugin\Filter;
 
+use Drupal\filter\FilterProcessResult;
 use Drupal\filter\Plugin\FilterBase;
 
 /**
@@ -25,8 +26,8 @@ class EmptyParagraphKiller extends FilterBase {
   /**
    * Performs the filter processing.
    */
-  public function process($text, $langcode, $cache, $cache_id) {
-    return preg_replace('#<p[^>]*>(\s|&nbsp;?)*</p>#', '', $text);
+  public function process($text, $langcode) {
+    return new FilterProcessResult(preg_replace('#<p[^>]*>(\s|&nbsp;?)*</p>#', '', $text));
   }
 
 }
