@@ -27,7 +27,7 @@ class EmptyParagraphKiller extends FilterBase {
    * Performs the filter processing.
    */
   public function process($text, $langcode) {
-    return new FilterProcessResult(preg_replace('#<p[^>]*>(\s|&nbsp;?)*</p>#', '', $text));
+    return new FilterProcessResult(preg_replace('/<p[^>]*>(&nbsp;|\s)*<\/p>/ui', '', $text));
   }
 
 }
